@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -6,20 +7,47 @@
 }
 
 :root{
-    --background-body: linear-gradient(160deg, rgba(0, 0, 0, 1) , rgba(27, 27, 27, 0.62));
-    --text-color: white;
+
+    --background-body: linear-gradient(160deg, rgba(0, 0, 0, 1), rgba(27, 27, 27, 0.62));
+    --bg-dark-primary: rgb(25, 25, 25);
+    --bg-dark-secondary: rgb(33, 33, 33);
+    --bg-card-gradient: linear-gradient(-10deg, black, rgb(84, 84, 84));
+    --bg-title: rgba(139, 139, 139, 0.362);
+    --bg-signup: rgb(104, 104, 104);
+    --bg-signup-hover: rgba(0, 0, 0, 0.329);
+
+ 
+    --text-color: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.568);
     --color-line: rgba(255, 255, 255, 0.155);
 
+    --border-light: rgba(255, 255, 255, 0.69);
+    --border-signup: rgba(255, 255, 255, 0.39);
+    --border-white: #ffffff;
+
+    --shadow-soft: 0 10px 12px rgba(0, 0, 0, 0.382);
+    --shadow-glow-strong: 0 0 150px rgba(255, 255, 255, 0.378);
+    --shadow-glow-medium: 0 0 60px rgba(255, 255, 255, 0.231);
+
+
+    --text-glow: 
+        0 0 0px #fff,
+        0 0 0px #fff,
+        0 0 0px #ffffff,
+        0 0 0px #ffffff,
+        0 0 0px #ffffff,
+        0 0 30px #ffffff;
 }
+
 body{
     background: var(--background-body);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-      font-family: "Ubuntu", sans-serif;
-     font-weight: 500;
-     font-style: normal;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: normal;
     color: var(--text-color);
     margin-top: 10rem;
 }
@@ -34,8 +62,6 @@ header{
     justify-content: space-between;
     padding: 1rem 1rem 0 1rem;
     z-index: 1000;
-
-
 }
 
 header h2{
@@ -56,18 +82,16 @@ header h2{
 .logo img{
     width: 70px;
     margin-right: 1rem;
-     animation: girar 20s linear infinite;
+    animation: girar 20s linear infinite;
 }
-
-
 
 .line{
-    margin: 0 1rem 0 1rem;
+    margin: 0 1rem;
     font-size: 3rem;
     font-weight: 100;
-
     color: var(--color-line);
 }
+
 ul {
   display: flex;
   justify-content: space-around;
@@ -79,6 +103,7 @@ ul {
 li {
   position: relative;
 } 
+
 a {
   text-decoration: none;
   color: var(--text-color);
@@ -94,16 +119,13 @@ a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #ffffff;
+  background-color: var(--text-color);
   transition: width 0.3s ease, left 0.3s ease;
 }
 
-a:hover::after {
-  width: 100%;
-  left: 0;
-}
-
-a:focus::after, a:active::after {
+a:hover::after,
+a:focus::after, 
+a:active::after {
   width: 100%;
   left: 0;
 }
@@ -116,21 +138,25 @@ button{
 }
 
 .sign-in{
-
     border: none;
     background: transparent;
+    transition: all 0.3s ease;
+}
+
+.sign-in:hover{
+    text-shadow: var(--text-glow);
 }
 
 .sign-up{
   border-radius: 10px;
-  border: solid 1.5px rgba(255, 255, 255, 0.39);
-  background-color: rgb(104, 104, 104);
+  border: solid 1.5px var(--border-signup);
+  background-color: var(--bg-signup);
   transition: all 0.2s ease;
-   box-shadow: 0 10px 12px rgba(0, 0, 0, 0.382);
+  box-shadow: var(--shadow-soft);
 }
 
 .sign-up:hover{
-  background-color: rgba(0, 0, 0, 0.329);
+  background-color: var(--bg-signup-hover);
 }
 
 .slogan{
@@ -139,39 +165,30 @@ button{
     text-align: center;
     margin-top: 5rem;
     gap: 2rem;
-
 }
+
 .slogan h1{
     font-size: 3rem;
-      text-shadow: 
-    0 0 0px #fff,  
-    0 0 0px #fff, 
-    0 0 0px #ffffff, 
-    0 0 0px #ffffff, 
-    0 0 0px #ffffff, 
-    0 0 30px #ffffff;
+    text-shadow: var(--text-glow);
 }
 
 .slogan p{
-    color: rgba(255, 255, 255, 0.568);
+    color: var(--text-muted);
 }
 
 .interfaz{
     width: 100%;
     border-radius: 1rem;
-   display: flex;
-   justify-content: center;
-   margin-top: 5rem;
-
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
 }
 
 .interfaz img{
     width: 900px;
     border-radius: 1rem;
-    border: solid 3px rgba(255, 255, 255, 0.69);
-    box-shadow: 0 0 150px rgba(255, 255, 255, 0.378);
-
-    
+    border: solid 3px var(--border-light);
+    box-shadow: var(--shadow-glow-strong);
 }
 
 .container-materias{
@@ -179,114 +196,93 @@ button{
     top: -60px;
     width: 100%;
     height: 900px;
-    background-color: rgb(25, 25, 25);
+    background-color: var(--bg-dark-primary);
     padding: 5rem;
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid var(--border-white);
 }
 
 .container-materias h2{
-       font-size: 2rem;
-      text-shadow: 
-    0 0 0px #fff,  
-    0 0 0px #fff, 
-    0 0 0px #ffffff, 
-    0 0 0px #ffffff, 
-    0 0 0px #ffffff, 
-    0 0 30px #ffffff;
+    font-size: 2rem;
+    text-shadow: var(--text-glow);
     text-align: center;
-
 }
 
 hr{
-      border: 1px solid var(--color-line); 
+  border: 1px solid var(--color-line); 
   margin: 20px 0; 
 }
+
 .cards-materias{
     display: flex;
     justify-content: center;
     margin-top: 5rem;
-
 }
+
 .card{
-    background: linear-gradient(-10deg, black, rgb(84, 84, 84));
+    background: var(--bg-card-gradient);
     padding: 2rem;
     border-radius: 1rem;
-     border: solid 2px rgba(255, 255, 255, 0.69);
-     width: 300px;
-     height: 450px;
-     background-position: center;
-     background-repeat: no-repeat;
-     background-size: contain;
-     overflow: hidden;
-
-
+    border: solid 2px var(--border-light);
+    width: 300px;
+    height: 450px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    overflow: hidden;
 }
 
 .card ul{
-       display: flex;
+    display: flex;
     flex-direction: column;
-    list-style:disc;
+    list-style: disc;
     margin-top: 2rem;
 }
 
 .title{
-    background-color: rgba(139, 139, 139, 0.362);
+    background-color: var(--bg-title);
     width: auto;
     height: 150px;
     border-radius: 1rem;
-    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.382);
+    box-shadow: var(--shadow-soft);
 }
 
 .title h3{
     text-align: center;
     padding: 2.4rem;
     font-size: 1.5rem;
-
 }
+
 .card-left{
     position: relative;
     bottom: 100px;
     transform: rotate(20deg);
-    margin-top: 6rem ;
+    margin-top: 6rem;
     filter: brightness(50%);
     transition: all 0.3s ease;
     z-index: 1001;
-    
 }
+
 .card-left:hover{
    transform: rotate(20deg) translateY(-3rem);
-       filter: brightness(100%);
-       box-shadow: 0 0 60px rgba(255, 255, 255, 0.231);
-        text-shadow: 
-    0 0 0px #fff,  
-    0 0 0px #fff, 
-    0 0 0px #ffffff, 
-    0 0 0px #ffffff, 
-    0 0 0px #ffffff, 
-    0 0 30px #ffffff;
+   filter: brightness(100%);
+   box-shadow: var(--shadow-glow-medium);
+   text-shadow: var(--text-glow);
 }
-.card-rigth{
 
-       transform: rotate(-20deg);
-       margin-top: 6rem;
-       filter: brightness(50%);
-       transition: all 0.3s ease;
-       
+.card-rigth{
+   transform: rotate(-20deg);
+   margin-top: 6rem;
+   filter: brightness(50%);
+   transition: all 0.3s ease;
 }
 
 .card-rigth:hover{
-     transform: rotate(-20deg) translateY(-3rem);
-         filter: brightness(100%);
-              box-shadow: 0 0 60px rgba(255, 255, 255, 0.231);
-               text-shadow: 
-    0 0 0px #fff,  
-    0 0 0px #fff, 
-    0 0 0px #ffffff, 
-    0 0 0px #ffffff, 
-    0 0 0px #ffffff, 
-    0 0 30px #ffffff;
-   
+   transform: rotate(-20deg) translateY(-3rem);
+   filter: brightness(100%);
+   box-shadow: var(--shadow-glow-medium);
+   text-shadow: var(--text-glow);
 }
+
 .card-alfa{
     width: 400px;
     height: 600px;
@@ -294,52 +290,36 @@ hr{
     filter: brightness(50%);
     transition: all 0.3s ease;
 }
-.card-alfa:hover{
-     transform:translateY(-3rem);
-    filter: brightness(100%);
-         box-shadow: 0 0 60px rgba(255, 255, 255, 0.231);
-          text-shadow: 
-    0 0 0px #fff,  
-    0 0 0px #fff, 
-    0 0 0px #ffffff, 
-    0 0 0px #ffffff, 
-    0 0 0px #ffffff, 
-    0 0 30px #ffffff;
-}
-.card-alfa img{
-    position: relative;
 
+.card-alfa:hover{
+    transform: translateY(-3rem);
+    filter: brightness(100%);
+    box-shadow: var(--shadow-glow-medium);
+    text-shadow: var(--text-glow);
+}
+
+.card-alfa img,
+.card-rigth img,
+.card-left img{
+    position: relative;
+    object-fit: cover;
+    filter: brightness(20000%);
+    z-index: -1000;
+}
+
+.card-alfa img{
     width: 700px;
     right: 30px;
     bottom: 60px;
-
-    object-fit: cover;
-    filter: brightness(20000%);
-    z-index: -1000;
-
 }
-.card-rigth img{
-        position: relative;
 
-    width: 400px;
-    right: 30px;
-    bottom: 70px;
-
-    object-fit: cover;
-    filter: brightness(20000%);
-    z-index: -1000;
-}
+.card-rigth img,
 .card-left img{
-            position: relative;
-
     width: 400px;
     right: 30px;
     bottom: 70px;
-
-    object-fit: cover;
-    filter: brightness(20000%);
-    z-index: -1000;
 }
+
 .card-alfa ul{
     margin: 1rem;
 }
@@ -347,54 +327,55 @@ hr{
 .card-relleno{
     width: 300px;
     height: 400px;
-    background-color: rgb(33, 33, 33);
+    background-color: var(--bg-dark-secondary);
     border-radius: 1rem;
-    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.382);
+    box-shadow: var(--shadow-soft);
     display: flex;
     justify-content: center;
-
-
 }
+
 .cardOne img{
-      animation: girar 20s linear infinite;
+    animation: girar 20s linear infinite;
 }
+
 .cardOne{
     position: relative;
     top: 30px;
     transform: rotate(30deg);
-      
 }
+
 .cardTwo img{
-      animation: girar-left 20s linear infinite;
+    animation: girar-left 20s linear infinite;
 }
+
 .cardTwo{
     position: relative;
     bottom: 90px;
-     transform: rotate(-50deg);
-    
+    transform: rotate(-50deg);
 }
+
 .card-relleno img{
     width: 200px;
     height: 200px;
     object-fit: cover;
-    margin: auto 0 auto 0;
+    margin: auto 0;
     filter: brightness(1%);
-    
 }
-@keyframes girar {
-  0% {
-    transform: rotate(0deg); 
-  }
-  100% {
-    transform: rotate(360deg); 
-  }
-}
-@keyframes girar-left {
-  0% {
-    transform: rotate(360deg); 
-  }
-  100% {
-    transform: rotate(0deg); 
-  }
+.slogan,
+.interfaz,
+.container-materias {
+    transition: transform 0.1s linear, opacity 0.1s linear;
+    will-change: transform, opacity;
 }
 
+
+
+@keyframes girar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes girar-left {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
