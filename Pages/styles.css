@@ -8,12 +8,17 @@
 
 :root{
 
-    --background-body: linear-gradient(160deg, rgba(0, 0, 0, 1), rgba(27, 27, 27, 0.62));
-    --bg-dark-primary: rgb(25, 25, 25);
-    --bg-dark-secondary: rgb(33, 33, 33);
+    --background-body: linear-gradient(
+    135deg,
+    #000000,
+    #1a1a1a,
+    #2b2b2b
+  );;
+    --bg-dark-primary: rgb(0, 0, 0);
+    --bg-dark-secondary: rgb(29, 29, 29);
     --bg-card-gradient: linear-gradient(-10deg, black, rgb(84, 84, 84));
     --bg-title: rgba(139, 139, 139, 0.362);
-    --bg-signup: rgb(104, 104, 104);
+    --bg-signup: rgba(255, 255, 255, 0.014);
     --bg-signup-hover: rgba(0, 0, 0, 0.329);
 
  
@@ -50,6 +55,7 @@ body{
     font-style: normal;
     color: var(--text-color);
     margin-top: 10rem;
+    position: relative;
 }
 
 header{
@@ -185,31 +191,40 @@ button{
 }
 
 .interfaz img{
+    position: relative;
     width: 900px;
     border-radius: 1rem;
     border: solid 3px var(--border-light);
     box-shadow: var(--shadow-glow-strong);
+    z-index: 1000;
 }
 
 .container-materias{
-    position: relative;
-    top: -60px;
     width: 100%;
-    height: 900px;
+    min-height: 80vh; /* mejor que height fijo */
     background-color: var(--bg-dark-primary);
-    padding: 5rem;
-    border-bottom: 3px solid var(--border-white);
+    padding: 1rem;
+       -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 10%,
+        black 90%,
+        transparent 100%
+    );
 }
 
 .container-materias h2{
     font-size: 2rem;
     text-shadow: var(--text-glow);
     text-align: center;
-}
-
-hr{
-  border: 1px solid var(--color-line); 
-  margin: 20px 0; 
 }
 
 .cards-materias{
@@ -254,7 +269,7 @@ hr{
 
 .card-left{
     position: relative;
-    bottom: 100px;
+    bottom: 60px;
     transform: rotate(20deg);
     margin-top: 6rem;
     filter: brightness(50%);
@@ -323,43 +338,38 @@ hr{
 .card-alfa ul{
     margin: 1rem;
 }
-
-.card-relleno{
-    width: 300px;
-    height: 400px;
-    background-color: var(--bg-dark-secondary);
-    border-radius: 1rem;
-    box-shadow: var(--shadow-soft);
-    display: flex;
-    justify-content: center;
-}
-
-.cardOne img{
-    animation: girar 20s linear infinite;
-}
-
 .cardOne{
-    position: relative;
-    top: 30px;
-    transform: rotate(30deg);
+   height: 400px;
+   width: 300px;
+    margin: 1rem 10rem 0 0;
+    line-height: 1.6;
+}
+hr{
+    margin-top: 2rem;
+
 }
 
-.cardTwo img{
-    animation: girar-left 20s linear infinite;
+.hrTwo{
+    margin-top: 1rem;
+    width: 70%;
 }
 
-.cardTwo{
-    position: relative;
-    bottom: 90px;
-    transform: rotate(-50deg);
+.hrThree{
+       margin-top: 1rem;
+    width: 40%;
 }
 
-.card-relleno img{
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    margin: auto 0;
-    filter: brightness(1%);
+.hrFour{
+    width: 70%;
+    margin-bottom: -1rem;
+}
+.hrFive{
+    margin-bottom: 2rem;
+}
+
+.hrSix{
+    margin-bottom: -1rem;
+    width: 40%;
 }
 .slogan,
 .interfaz,
@@ -368,7 +378,15 @@ hr{
     will-change: transform, opacity;
 }
 
-
+.shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1; /* queda detrás del contenido */
+  pointer-events: none; /* evita que bloquee clics */
+}
 
 @keyframes girar {
   0% { transform: rotate(0deg); }
