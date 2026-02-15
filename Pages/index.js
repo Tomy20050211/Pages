@@ -151,18 +151,72 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
     const dots = document.querySelectorAll('.dot');
+    const h1 = document.getElementById('h1Mahoraga')
+
+    // ========================================
+    // ⭐ FUNCIÓN PARA CAMBIAR COLOR DEL LOGO Y CÍRCULO
+    // ========================================
+    function updateLogoColor(isRegisterMode) {
+        const logoLogin = document.querySelector('.logoLogin');
+        const logoCircle = document.querySelector('.logo-circle');
+        const brandPanel = document.getElementById('brandPanel');
+        
+        if (logoLogin && logoCircle) {
+            // Pequeño efecto de escala durante el cambio
+            logoCircle.style.transform = 'scale(0.95)';
+            logoLogin.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                if (isRegisterMode) {
+                    // Register: Logo Blanco + Círculo Negro + Fondo Blanco
+                    logoLogin.style.filter = 'brightness(100%)';
+                    logoCircle.style.background = 'linear-gradient(135deg, #000000 0%, #000000 100%)';
+                    logoCircle.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
+                    if (brandPanel) {
+                        brandPanel.style.background = 'linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%)';
+                        h1.style.color = 'black';
+                    }
+                } else {
+                    // Login: Logo Negro + Círculo Blanco + Fondo Oscuro
+                    logoLogin.style.filter = 'brightness(1%)';
+                    logoCircle.style.background = 'linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%)';
+                    logoCircle.style.boxShadow = '0 10px 30px rgba(255, 255, 255, 0.2)';
+                    if (brandPanel) {
+                        brandPanel.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #000000 50%, #000000 100%)';
+                    }
+                }
+            }, 100);
+            
+            // Efecto de expansión (pop)
+            setTimeout(() => {
+                logoCircle.style.transform = 'scale(1.05)';
+                logoLogin.style.transform = 'scale(1.05)';
+            }, 150);
+            
+            // Volver a normal
+            setTimeout(() => {
+                logoCircle.style.transform = 'scale(1)';
+                logoLogin.style.transform = 'scale(1)';
+            }, 300);
+        }
+    }
 
     // Open modal with login form
     if (openLoginBtn) {
         openLoginBtn.addEventListener('click', () => {
             authModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent body scroll
+            document.body.style.overflow = 'hidden';
             
             // Reset to login view
             authWrapper.classList.remove('register-mode');
             registerSection.classList.remove('active');
             loginSection.classList.add('active');
             updateDots(0);
+            
+            // ⭐ Establecer colores iniciales para login
+            setTimeout(() => {
+                updateLogoColor(false);
+            }, 100);
         });
     }
 
@@ -182,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close modal function
     function closeModal() {
         authModal.classList.remove('active');
-        document.body.style.overflow = ''; // Restore body scroll
+        document.body.style.overflow = '';
         
         // Reset forms
         if (loginForm) loginForm.reset();
@@ -210,7 +264,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Switch to Register
+    // ========================================
+    // ⭐ Switch to Register (ACTUALIZADO)
+    // ========================================
     function switchToRegisterView() {
         // Fade out brand panel
         brandPanel.classList.add('fade-out');
@@ -223,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             authWrapper.classList.add('register-mode');
             updateDots(1);
+            updateLogoColor(true); // ⭐ Logo blanco + círculo negro
         }, 250);
         
         // Fade in brand panel in new position
@@ -237,7 +294,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 350);
     }
 
-    // Switch to Login
+    // ========================================
+    // ⭐ Switch to Login (ACTUALIZADO)
+    // ========================================
     function switchToLoginView() {
         // Fade out brand panel
         brandPanel.classList.add('fade-out');
@@ -250,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             authWrapper.classList.remove('register-mode');
             updateDots(0);
+            updateLogoColor(false); // ⭐ Logo negro + círculo blanco
         }, 250);
         
         // Fade in brand panel in new position
@@ -454,5 +514,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    console.log('Mahoraga - All systems initialized');
+    console.log('Mahoraga - All systems initialized ✨');
 });
